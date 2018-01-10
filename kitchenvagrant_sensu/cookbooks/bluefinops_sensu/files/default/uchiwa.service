@@ -1,0 +1,17 @@
+[Unit]
+Description=uchiwa service
+Requires=sensu-api.service
+After=sensu-api.service
+
+[Service]
+User=uchiwa
+Group=uchiwa
+WorkingDirectory=/opt/uchiwa/src
+ExecStart=/opt/uchiwa/bin/uchiwa -c /etc/sensu/uchiwa.json -d /etc/sensu/dashboard.d -p /opt/uchiwa/src/public &
+SyslogIdentifier=uchiwa
+KillMode=process
+Restart=on-failure
+RestartSec=1min
+
+[Install]
+WantedBy=multi-user.target

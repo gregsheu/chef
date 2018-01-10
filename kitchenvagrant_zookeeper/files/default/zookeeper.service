@@ -1,0 +1,13 @@
+[Unit]
+Description=Zookeeper
+After=network.target
+Wants=network.target
+
+[Service]
+ExecStart=/opt/zookeeper/zookeeper-3.4.8/bin/zkServer.sh start-foreground /opt/zookeeper/zookeeper-3.4.8/conf/zoo.cfg
+Restart=always
+RestartSec=20
+LimitNOFILE=16384
+
+[Install]
+WantedBy=multi-user.targe

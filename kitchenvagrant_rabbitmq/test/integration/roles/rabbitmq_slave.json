@@ -1,0 +1,6 @@
+{
+  "name": "rabbitmq_slave",
+  "run_list": [
+      "recipe[mygreops_rabbitmq::rabbitmq_server]"
+   ]
+}

@@ -1,0 +1,76 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12.14
+  client_rb:
+    environment: production
+
+platforms:
+    #- name: centos-6.6
+  - name: centos-7.2
+
+suites:
+  - name: rabbitmq1
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.73.33"}]
+    run_list:
+      #- recipe[bluefinops_sensu::rabbitmq_server]
+      - role[sensu_rabbitmq_master]
+    attributes: {}
+  - name: rabbitmq2
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.73.34"}]
+    run_list:
+      #- recipe[bluefinops_sensu::rabbitmq_server]
+      - role[sensu_rabbitmq_slave]
+    attributes: {}
+  - name: rabbitmq3
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.73.35"}]
+    run_list:
+      #- recipe[bluefinops_sensu::rabbitmq_server]
+      - role[sensu_rabbitmq_slave]
+    attributes: {}
+  - name: redis1
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.73.36"}]
+    run_list:
+      - role[sensu_redis_master]
+    attributes: {}
+  - name: redis2
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.73.37"}]
+    run_list:
+      - role[sensu_redis_slave]
+    attributes: {}
+  - name: redis3
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.73.38"}]
+    run_list:
+      - role[sensu_redis_slave]
+    attributes: {}
+  - name: sensu-server
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.73.39"}]
+    run_list:
+    - recipe[bluefinops_sensu::sensu_server]
+    - recipe[bluefinops_sensu::uchiwa]
+    - recipe[bluefinops_sensu::sensu_client]
+    attributes: {}
+  - name: sensu-client
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.73.41"}]
+    run_list:
+    - recipe[bluefinops_sensu::sensu_client]
+    attributes: {}

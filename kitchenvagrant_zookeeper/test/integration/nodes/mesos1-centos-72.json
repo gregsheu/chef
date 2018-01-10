@@ -1,0 +1,15 @@
+{
+  "name": "mesos1-centos-72",
+  "chef_environment": "production",
+  "run_list": [
+    "role[mesos-master]"
+  ],
+  "normal" :{
+  "fqdn": "mesos1-centos-72",
+    "hostname": "mesos1-centos-72",
+    "ipaddress": "192.168.33.36",
+    "network": {
+      "internal_ip": "192.168.33.36"
+    }
+  }
+}

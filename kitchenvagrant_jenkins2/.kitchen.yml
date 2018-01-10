@@ -1,0 +1,62 @@
+---
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12.19
+  client_rb:
+    environment: dev1
+
+platforms:
+  - name: centos-7.2
+
+suites:
+    #- name: slave-docker
+    #- driver:
+    #-   network: 
+    #-     - ["private_network", {ip: "192.168.34.37"}]
+    #-   name: vagrant
+
+    #- run_list:
+    #-   - recipe[bluefinops_jenkins2::docker]
+    #-   - recipe[bluefinops_sudo]
+    #- attributes: {
+    #-   'bluefinops_sudo': {'user': 'jenkins', 'passwordless': true}
+    #- } 
+  - name: slave
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.34.35"}]
+      name: vagrant
+    run_list:
+      - recipe[bluefinops_jenkins2::slave]
+      - recipe[bluefinops_sudo]
+    attributes: {
+      'bluefinops_sudo': {'user': 'jenkins', 'passwordless': true}
+    } 
+  - name: slave-2
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.34.36"}]
+      name: vagrant
+    run_list:
+      - recipe[bluefinops_jenkins2::slave]
+      - recipe[bluefinops_sudo]
+    attributes: {
+      'bluefinops_sudo': {'user': 'jenkins', 'passwordless': true}
+    } 
+  - name: master
+    driver:
+      customize:
+        memory: 8192
+        cpus: 4
+      network: 
+        - ["forwarded_port", {guest: 8080, host: 8080}]
+        - ["private_network", {ip: "192.168.34.34"}]
+      name: vagrant
+    run_list:
+        - recipe[bluefinops_jenkins2]
+    attributes: {'bluefinops_jenkins2': {'revision': '2.46.1-1.1'}}
+    #attributes: {
+    #  'bluefinops_jenkins2': {'ldap': {'jenkins_username': 'jenkins-auth', 'jenkins_password': 'u1k+J7SJchoKYUnDQrZp'}},
+    #  'endpoints': {'ldap': '172.16.0.108'}
+    #}

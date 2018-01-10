@@ -1,0 +1,6 @@
+{
+  "name": "redis_master",
+  "run_list": [
+      "recipe[bluefinops_redis::redis_server]"
+   ]
+}

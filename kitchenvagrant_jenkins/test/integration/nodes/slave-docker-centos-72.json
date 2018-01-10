@@ -1,0 +1,15 @@
+{
+  "name": "slave-docker-centos-72",
+  "chef_environment": "dev1",
+  "run_list": [
+    "role[jenkins_slave_docker]"
+  ],
+  "normal" :{
+    "fqdn": "slave-docker-centos-72.localdomain",
+    "hostname": "slave-docker-centos-72",
+    "ipaddress": "192.168.33.37",
+    "network": {
+      "internal_ip": "192.168.33.37"
+    }
+  }
+}

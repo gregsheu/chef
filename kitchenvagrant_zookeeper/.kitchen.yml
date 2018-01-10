@@ -1,0 +1,94 @@
+---
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12.19
+  client_rb:
+    environment: production
+
+platforms:
+    #- name: centos-6.6
+  - name: centos-7.2
+
+suites:
+  - name: zoo1
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.33"}]
+      name: vagrant
+    run_list:
+      - recipe[bluefinops_zookeeper::zookeeper]
+    attributes: {}
+  - name: zoo2
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.34"}]
+      name: vagrant
+    run_list:
+      - recipe[bluefinops_zookeeper::zookeeper]
+    attributes: {}
+  - name: zoo3
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.35"}]
+      name: vagrant
+    run_list:
+      - recipe[bluefinops_zookeeper::zookeeper]
+    attributes: {}
+  - name: mesos1
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.36"}]
+      name: vagrant
+    run_list:
+      - recipe[bluefinops_zookeeper::mesos_master]
+      - recipe[bluefinops_zookeeper::marathon]
+      - recipe[bluefinops_zookeeper::chronos]
+    attributes: {}
+  - name: mesos2
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.37"}]
+      name: vagrant
+    run_list:
+      - recipe[bluefinops_zookeeper::mesos_master]
+      - recipe[bluefinops_zookeeper::marathon]
+      - recipe[bluefinops_zookeeper::chronos]
+    attributes: {}
+  - name: mesos3
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.38"}]
+      name: vagrant
+    run_list:
+      - recipe[bluefinops_zookeeper::mesos_master]
+      - recipe[bluefinops_zookeeper::marathon]
+      - recipe[bluefinops_zookeeper::chronos]
+    attributes: {}
+  - name: mesos-slave1
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.39"}]
+      name: vagrant
+    run_list:
+    - recipe[bluefinops_zookeeper::mesos_slave]
+    attributes: {}
+  - name: mesos-slave2
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.40"}]
+      name: vagrant
+    run_list:
+    - recipe[bluefinops_zookeeper::mesos_slave]
+    attributes: {}
+  - name: mesos-slave3
+    driver:
+      network: 
+        - ["private_network", {ip: "192.168.33.41"}]
+      name: vagrant
+    run_list:
+    - recipe[bluefinops_zookeeper::mesos_slave]
+    attributes: {}
+    #attributes: {
+    #  'bluefinops_zookeeper': {'ldap': {'jenkins_username': 'jenkins-auth', 'jenkins_password': 'u1k+J7SJchoKYUnDQrZp'}},
+    #  'endpoints': {'ldap': '172.16.0.108'}
+    #}

@@ -1,0 +1,44 @@
+{
+  "name": "bluefinops_sensu",
+  "description": "Installs, Configures Sensu ",
+  "long_description": "",
+  "maintainer": "gregsheu",
+  "maintainer_email": "greg@bluefinops",
+  "license": "All rights reserved",
+  "platforms": {
+  },
+  "dependencies": {
+    "sensu": "~> 2.12",
+    "rabbitmq": "= 4.6.0",
+    "uchiwa": "~> 1.2"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0",
+  "source_url": "",
+  "issues_url": "",
+  "privacy": false,
+  "chef_versions": [
+
+  ],
+  "ohai_versions": [
+
+  ],
+  "gems": [
+
+  ]
+}

@@ -1,0 +1,2 @@
+Host 127.0.0.1 *.sendgrid.net 10.*
+  ForwardAgent yes

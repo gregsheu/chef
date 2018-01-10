@@ -1,0 +1,14 @@
+{
+  "name": "rancher-agent-centos-66",
+  "chef_environment": "development",
+  "run_list": [
+    "role[rancher_agent]"
+  ],
+  "normal" :{
+  "fqdn": "rancher-agent-centos-66",
+  "hostname": "rancher-agent-centos-66",
+  "network": {
+    "internal_ip": "192.168.43.34"
+    }
+  }
+}

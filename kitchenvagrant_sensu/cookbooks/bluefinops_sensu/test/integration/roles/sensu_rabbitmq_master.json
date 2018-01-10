@@ -1,0 +1,6 @@
+{
+  "name": "sensu_rabbitmq_master",
+  "run_list": [
+      "recipe[bluefinops_sensu::rabbitmq_server]"
+   ]
+}

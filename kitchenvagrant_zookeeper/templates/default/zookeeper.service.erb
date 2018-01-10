@@ -1,0 +1,19 @@
+[Unit]
+Description=Zookeeper distributed coordination server
+After=network.target
+
+[Service]
+User=<%= @node['zookeeper-platform']['user'] %>
+Group=<%= @node['zookeeper-platform']['user'] %>
+SyslogIdentifier=zookeeper
+Restart=on-failure
+ExecStart=/usr/bin/java \
+-cp <%= @classpath %> \
+-Dlog4j.configuration=file:<%= @log4j_file %> \
+<% @node['zookeeper-platform']['jvm_opts'].each do |key,value| %>
+<%= key %><% unless value.nil? %>=<%= value %><% end %> \
+<% end %>
+org.apache.zookeeper.server.quorum.QuorumPeerMain \
+<%= @config_file %>
+[Install]
+WantedBy=multi-user.target

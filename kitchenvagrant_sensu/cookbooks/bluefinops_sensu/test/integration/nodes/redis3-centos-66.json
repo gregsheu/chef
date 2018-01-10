@@ -1,0 +1,14 @@
+{
+  "name": "redis3-centos-66",
+  "chef_environment": "production",
+  "run_list": [
+    "role[redis]"
+  ],
+  "normal" :{
+  "fqdn": "redis3-centos-66",
+    "hostname": "redis3-centos-66",
+    "network": {
+      "internal_ip": "192.168.73.38"
+    }
+  }
+}

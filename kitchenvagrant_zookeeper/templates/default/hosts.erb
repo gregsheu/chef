@@ -1,0 +1,13 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+#127.0.0.1   <%= node[:hostname] %> localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+<% @zoos['keeper'].each do |h| %>
+<%= h.ipaddress %> <%= h.hostname %> <%= h.hostname[0,h.hostname.index('-')] %>
+<% end %>
+<% @zoos['mesos-master'].each do |h| %>
+<%= h.ipaddress %> <%= h.hostname %> <%= h.hostname[0,h.hostname.index('-')] %>
+<% end %>
+<% @zoos['mesos-slave'].each do |h| %>
+<%= h.ipaddress %> <%= h.hostname %> <%= h.hostname[0,h.hostname.index(/[\d]/) + 1] %>
+<% end %>

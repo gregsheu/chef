@@ -1,0 +1,25 @@
+{
+  "rabbitmq": {
+    "host": "<%= @rabbitmq_master %>",
+    "vhost": "/sensu",
+    "user": "sensu",
+    "password": "<%= @node['bluefinops_sensu']['rabbitmq']['password'] %>",
+    <% if @node["sensu"]["use_ssl"] %>
+    <%= '"port": 5671,
+    "ssl": {
+      "cert_chain_file": "/etc/sensu/ssl/cert.pem",
+      "private_key_file": "/etc/sensu/ssl/key.pem"
+    }' %>
+    <% else %>
+    <%= '"port": 5672' %>
+    <% end %>
+  },
+  "client": {
+    "name": "<%= @node['hostname'] %>",
+    "address": "<%= @node['ipaddress'] %>",
+    "subscriptions": [
+      "test"
+    ]
+  }
+}
+
