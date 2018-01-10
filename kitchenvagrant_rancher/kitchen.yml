@@ -1,0 +1,28 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12
+
+platforms:
+  - name: centos-6.7
+    driver:
+      box: sendgrid_centos-6_chef-11_devtools
+      box_url: http://repo.sjc1.sendgrid.net/images/vagrant/metadata/sendgrid_centos-6_chef-11_devtools.json
+
+suites:
+  - name: vagrant
+    run_list: 
+      - recipe[sendgrid_server]
+      - recipe[sendgrid_informatica::deployment_ops]
+    #attributes: {'endpoints': {'yum_repo': 'repo0001s1dfw2.sendgrid.net', 'gem_repo': 'gems.sendgrid.net'}, 'sendgrid_informatica': {'username': 'ops@sendgrid.com', 'password': '0p3r@t10n$'}, {'gem_repo': 'gems.sendgrid.net'}, {'yum_repo': 'repo0001s1dfw2.sendgrid.net'}}
+    attributes: 
+      endpoints: 
+        yum_repo: repo0001s1dfw2.sendgrid.net
+        gem_repo: gems.sendgrid.net
+      sendgrid_informatica: 
+        username: ops@sendgrid.com
+        password: 0p3r@t10n$ 
+      gem_repo: gems.sendgrid.net

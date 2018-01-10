@@ -1,0 +1,15 @@
+{
+  "name": "zoo3-centos-72",
+  "chef_environment": "production",
+  "run_list": [
+    "role[zookeeper]"
+  ],
+  "normal" :{
+  "fqdn": "zoo3-centos-72.localdomain",
+    "hostname": "zoo3-centos-72",
+    "ipaddress": "192.168.33.35",
+    "network": {
+      "internal_ip": "192.168.33.35"
+    }
+  }
+}

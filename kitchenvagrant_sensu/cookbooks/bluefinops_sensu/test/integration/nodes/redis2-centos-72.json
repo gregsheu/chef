@@ -1,0 +1,15 @@
+{
+  "name": "redis2-centos-72",
+  "chef_environment": "production",
+  "run_list": [
+    "role[sensu_redis_slave]"
+  ],
+  "normal" :{
+  "fqdn": "redis2-centos-72",
+    "hostname": "redis2-centos-72",
+    "ipaddress": "192.168.73.37",
+    "network": {
+      "internal_ip": "192.168.73.37"
+    }
+  }
+}

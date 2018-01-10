@@ -1,0 +1,30 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  client_rb:
+    environment: development
+
+platforms:
+- name: centos-7.2
+  #- name: centos-6.6
+
+suites:
+- name: rancher_server
+  driver:
+    network: 
+      - ["private_network", {ip: "192.168.43.33"}]
+      - ["forwarded_port", {guest: 8080, host: 8080, auto_correct: true}]
+  run_list:
+  - recipe[bluefinops_rancher::server]
+  attributes:
+- name: rancher_agent
+  driver:
+    network: 
+      - ["private_network", {ip: "192.168.43.34"}]
+      - ["forwarded_port", {guest: 8080, host: 8080, auto_correct: true}]
+  run_list:
+  - recipe[bluefinops_rancher::agent]
+  attributes:

@@ -1,0 +1,23 @@
+override['java']['install_flavor'] = 'oracle'
+override['java']['jdk_version'] = '8'
+default['java']['oracle']['accept_oracle_download_terms'] = true
+default['jenkins']['master']['install_method'] = 'package'
+default['bluefinops_jenkins']['ports'] = [25, 80, 8080, 1084, 1086, 1088]
+default['bluefinops_jenkins']['user'] = 'jenkins'
+default['bluefinops_jenkins']['group'] = 'jenkins'
+default['bluefinops_jenkins']['jenkins_home'] = '/var/lib/jenkins'
+default['bluefinops_jenkins']['password'] = '$1$.JkiVyh5$11L6COktwXsF03ynJAy7n1'
+default['bluefinops_jenkins']['git'] = 'git@github.com:sendgrid/bluefinops_jenkins.git'
+default['jenkins']['master']['repository'] = 'https://pkg.jenkins.io/redhat-stable/'
+default['bluefinops_jenkins']['revision'] = '1.651.3-1.1'
+default['bluefinops_jenkins']['plugins'] = ['git-client', 'git', 'github', 'docker-plugin', 'gitlab-plugin']
+default['bluefinops_jenkins']['install_dir'] = '/var/lib/jenkins'
+default['bluefinops_jenkins']['ldap']['jenkins_username'] = 'jenkins-auth'
+default['bluefinops_jenkins']['ldap']['jenkins_password'] = 'u1k+J7SJchoKYUnDQrZp'
+#default['endpoints']['ldap'] = 'stds-001.sjc1.sendgrid.net'
+default['endpoints']['ldap'] = '172.16.0.108'
+default['bluefinops_jenkins']['jenkins']['users'] = ['jenkins', 'vagrant', 'greg']
+#ldap, unix, hudson
+default['bluefinops_jenkins']['jenkins']['security_type'] = 'hudson'
+default['jenkins']['master']['version'] = node['bluefinops_jenkins']['revision'] 
+default['jenkins']['executor']['timeout'] = 1920

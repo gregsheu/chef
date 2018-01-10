@@ -1,0 +1,8 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.33.33 zoo1-centos-66 zoo1
+192.168.33.34 zoo2-centos-66 zoo2
+192.168.33.35 zoo3-centos-66 zoo3
+192.168.33.36 mesos1-centos-66 mesos1
+192.168.33.37 mesos2-centos-66 mesos2
+192.168.33.38 mesos3-centos-66 mesos3

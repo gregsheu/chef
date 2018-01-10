@@ -1,0 +1,6 @@
+{
+  "name": "sensu_redis_server",
+  "run_list": [
+      "recipe[bluefinops_sensu::redis_server]"
+   ]
+}

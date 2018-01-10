@@ -1,0 +1,1 @@
+zk://<% hoststring = '' %><% @zoos['keeper'].each do |h| %><% hoststring = hoststring + h.name + ':2181,' %><% end %><%= hoststring.chop %>/mesos

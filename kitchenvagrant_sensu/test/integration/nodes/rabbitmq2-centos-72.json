@@ -1,0 +1,15 @@
+{
+  "name": "rabbitmq2-centos-72",
+  "chef_environment": "production",
+  "run_list": [
+    "role[sensu_rabbitmq_slave]"
+  ],
+  "normal" :{
+  "fqdn": "rabbitmq2-centos-72.localdomain",
+    "hostname": "rabbitmq2-centos-72",
+    "ipaddress": "192.168.73.34",
+    "network": {
+      "internal_ip": "192.168.73.34"
+    }
+  }
+}

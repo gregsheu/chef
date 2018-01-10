@@ -1,0 +1,5 @@
+source 'https://supermarket.chef.io'
+
+metadata
+cookbook 'docker', '~> 2.4'
+cookbook 'bluefinops_sudo', path: './cookbooks/kitchenvagrant_sudo'

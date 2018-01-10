@@ -1,0 +1,15 @@
+{
+  "name": "slave-centos-72",
+  "chef_environment": "dev1",
+  "run_list": [
+    "role[jenkins2_slave]"
+  ],
+  "normal" :{
+    "fqdn": "slave-centos-72.localdomain",
+    "hostname": "slave-centos-72",
+    "ipaddress": "192.168.34.35",
+    "network": {
+      "internal_ip": "192.168.34.35"
+    }
+  }
+}
